@@ -65,6 +65,10 @@ private:
     /// deallocate memory
     void cleanUp(){
         
+        /// Once the window is closed, we need to clean up resources by destroying it and terminating GLFW itself
+        glfwDestroyWindow(window);
+        glfwTerminate();
+        
     }
     
 };
