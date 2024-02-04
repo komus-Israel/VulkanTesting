@@ -1,3 +1,5 @@
+#define GLFW_INCLUDE_VULKAN
+#include "GLFW/glfw3.h"
 #include <vulkan/vulkan.h> ///  To provide functions, structures and enumerations
 
 #include <iostream> /// To report and propagate errors
@@ -9,10 +11,17 @@ class HelloTriangleApplication {
     
 public:
     void run (){
-        
+        initWindow();
+        initVulkan();
+        mainLoop();
+        cleanUp();
     }
     
 private:
+    
+    void initWindow(){
+        
+    }
     
     /// initialize vulkan object
     void initVulkan(){
@@ -36,7 +45,7 @@ int main(){
     HelloTriangleApplication app;
     
     try{
-        app.run()
+        app.run();
     } catch(const std::exception& e) {
         std::cerr << e.what() << std::endl;
         return EXIT_FAILURE;
