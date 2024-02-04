@@ -10,6 +10,12 @@ class HelloTriangleApplication {
     
     
 public:
+    
+    const uint32_t WIDTH = 800;
+    const uint32_t HEIGHT = 600;
+    
+    
+    
     void run (){
         initWindow();
         initVulkan();
@@ -19,8 +25,25 @@ public:
     
 private:
     
+    GLFWwindow* window;
+    
     void initWindow(){
         
+        /// The very first call in initWindow should be glfwInit() which initializes the GLFW library.
+        glfwInit();
+        
+        /// Because GLFW was originally designed to create an OpenGL context, we need to tell it to not create an OpenGL context with a subsequent call
+        glfwWindowHint(GLFW_CLIENT_API, GLFW_NO_API);
+        
+        /// Because handling resized windows takes special care that we'll look into later, disable it for now with another window hint call
+        glfwWindowHint(GLFW_RESIZABLE, GLFW_FALSE);
+        
+        /// All that's left now is creating the actual window. Add a GLFWwindow* window; private class member to store a reference to it and initialize the window
+        /// The first three parameters specify the width, height and title of the window. The fourth parameter allows you to optionally specify a monitor to open the window on and the last parameter is only relevant to OpenGL
+        window = glfwCreateWindow(WIDTH, HEIGHT, "Vulkan Window Creation", nullptr, nullptr);
+        
+        
+    
     }
     
     /// initialize vulkan object
@@ -30,6 +53,12 @@ private:
     
     /// render frames
     void mainLoop(){
+        
+        /// To keep the application running until either an error occurs or the window is closed, we need to add an event loop to the mainLoop function as follows:
+        
+        while (!glfwWindowShouldClose(window)) {
+            glfwPollEvents();
+        }
         
     }
     
