@@ -1,14 +1,46 @@
-//
-//  main.cpp
-//  VulkanTesting
-//
-//  Created by Komolehin Israel Timilehin on 02/02/2024.
-//
+#include <vulkan/vulkan.h> ///  To provide functions, structures and enumerations
 
-#include <iostream>
+#include <iostream> /// To report and propagate errors
+#include <stdexcept> /// To report and propagate errors
+#include <cstdlib> ///  provides the EXIT_SUCCESS and EXIT_FAILURE macros.
 
-int main(int argc, const char * argv[]) {
-    // insert code here...
-    std::cout << "Hello, World!\n";
-    return 0;
+class HelloTriangleApplication {
+    
+    
+public:
+    void run (){
+        
+    }
+    
+private:
+    
+    /// initialize vulkan object
+    void initVulkan(){
+         
+    }
+    
+    /// render frames
+    void mainLoop(){
+        
+    }
+    
+    /// deallocate memory
+    void cleanUp(){
+        
+    }
+    
+};
+
+
+int main(){
+    HelloTriangleApplication app;
+    
+    try{
+        app.run()
+    } catch(const std::exception& e) {
+        std::cerr << e.what() << std::endl;
+        return EXIT_FAILURE;
+    }
+    
+    return EXIT_SUCCESS;
 }
